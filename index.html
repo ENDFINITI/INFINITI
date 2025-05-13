@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INFINITI.</title>
+
+    <!---[Section: Styles and Fonts]-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/31522708/pexels-photo-31522708.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        h1, p {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .auth-button {
+            background-color: white;
+            border: 2px solid darkgrey;
+            color: black;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .auth-button:hover {
+            background-color: darkgrey;
+            color: white;
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 15px;
+            width: 90%;
+            border: 2px solid darkgrey;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        input:focus {
+            outline: none;
+            border: 2px solid white;
+            box-shadow: 0 0 10px white;
+        }
+
+        .submit-button {
+            background-color: white;
+            border: 2px solid darkgrey;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: darkgrey;
+            color: white;
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        .welcome-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px white;
+            display: none;
+        }
+
+        .welcome-message {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .logout-button {
+            background-color: white;
+            border: 2px solid darkgrey;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .logout-button:hover {
+            background-color: darkgrey;
+            color: white;
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!---[Section: Header]-->
+    <h1>Welcome to INFINITI.</h1>
+    <p>Where the possibilities are endless.</p>
+
+<h1 style="text-align: center; margin-top: 20px;">Social Media Feed</h1>
+
+    
+    <!---[Section: Buttons]-->
+    <div class="button-container" id="buttonContainer">
+        <button class="auth-button" onclick="showLogIn()">Log In</button>
+        <button class="auth-button" onclick="showSignUp()">Sign Up</button>
+    </div>
+
+    <!---[Section: Sign-Up Form]-->
+    <div class="form-container" id="signupForm">
+        <h2 style="color: white; margin-bottom: 20px;">Create Your Account</h2>
+        <input type="email" id="emailSignUp" placeholder="Enter your email" required>
+        <input type="text" id="usernameSignUp" placeholder="Enter a username" required>
+        <input type="password" id="passwordSignUp" placeholder="Enter a password" required>
+        <button class="submit-button" onclick="submitSignUp()">Sign Up</button>
+        <p id="errorMessageSignUp" class="error-message"></p>
+    </div>
+
+    <!---[Section: Log-In Form]-->
+    <div class="form-container" id="loginForm">
+        <h2 style="color: white; margin-bottom: 20px;">Log In</h2>
+        <input type="text" id="usernameLogIn" placeholder="Enter your username" required>
+        <input type="password" id="passwordLogIn" placeholder="Enter your password" required>
+        <button class="submit-button" onclick="submitLogIn()">Log In</button>
+        <p id="errorMessageLogIn" class="error-message"></p>
+    </div>
+
+<script>
+    function showLogIn() {
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("signupForm").style.display = "none";
+        document.getElementById("buttonContainer").style.display = "none";
+    }
+
+    function showSignUp() {
+        document.getElementById("signupForm").style.display = "block";
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("buttonContainer").style.display = "none";
+    }
+</script>
+
+<script>
+    function showLogIn() {
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("signupForm").style.display = "none";
+        document.getElementById("buttonContainer").style.display = "none";
+    }
+
+    function showSignUp() {
+        document.getElementById("signupForm").style.display = "block";
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("buttonContainer").style.display = "none";
+    }
+
+    // Close forms if clicking outside of them
+    document.addEventListener('click', function(event) {
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+        const isClickInsideLogin = loginForm.contains(event.target);
+        const isClickInsideSignup = signupForm.contains(event.target);
+        const isClickOnButton = event.target.classList.contains("auth-button");
+
+        if (!isClickInsideLogin && !isClickInsideSignup && !isClickOnButton) {
+            loginForm.style.display = "none";
+            signupForm.style.display = "none";
+            document.getElementById("buttonContainer").style.display = "block";
+        }
+    });
+</script>
+
+
+ 
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+ 
